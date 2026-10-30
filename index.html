@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en" data-accent="champagne" data-name="anton" data-size="4" data-bg="black"
+      data-head="big" data-reel="side" data-photos="strip" data-credits="years" data-ticker="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harrison Keen — Actor</title>
+<meta name="description" content="Harrison Keen, actor. Showreel, photos and credits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- MOCKUP: Oswald loads only as the backup name font. Drop it once a client's font is chosen. -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@700&family=Archivo:wdth,wght@62..100,400..900&family=Newsreader:ital,opsz,wght@1,6..72,400..600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000;         /* page, hero, footer */
+    --iron: #161616;       /* reel band */
+    --bone: #ece7df;       /* text on dark, credits page */
+    --ash: #9a958d;        /* secondary text on dark */
+    --soot: #4a4743;       /* secondary text on bone */
+    --gutter: clamp(16px, 5vw, 72px);
+    --text: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --display: "Anton", Impact, sans-serif;
+    --display-weight: 400;
+    --name-track: .005em;
+    --serif: "Newsreader", Georgia, serif;
+    --serif-style: italic;
+  }
+  /* Accent: one hard colour. --accent sits on dark, --accent-ink on bone. */
+  [data-accent="champagne"] { --accent: #dcc7a1; --accent-ink: #6f5a33; }
+  [data-accent="ivory"]     { --accent: #f4efe6; --accent-ink: #000; }
+  /* Page background: the hero fades into it, so it sets the whole mood */
+  [data-bg="midnight"] { --black: #070b13; --iron: #111a29; }
+  [data-bg="espresso"] { --black: #0f0a07; --iron: #1d1510; }
+  /* Name font (also drives section headings) */
+  [data-name="oswald"]   { --display: "Oswald", Impact, sans-serif; --display-weight: 700; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: var(--black); color: var(--bone); scroll-behavior: smooth; }
+  body { margin: 0; font: 400 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .wrap { width: min(100% - 2 * var(--gutter), 1320px); margin-inline: auto; }
+  .serif { font-family: var(--serif); font-style: var(--serif-style); }
+
+  .display {
+    font-family: var(--display); font-weight: var(--display-weight);
+    text-transform: uppercase; line-height: .86; letter-spacing: .005em; margin: 0;
+  }
+
+  /* ---------- Hero: centred photo, name across it ---------- */
+  .hero { position: relative; display: flex; flex-direction: column; align-items: center; padding-top: 24px; overflow: hidden; }
+  .hero-photo { position: relative; z-index: 1; height: 80svh; max-width: 100%; display: flex; justify-content: center; }
+  .hero-photo img {
+    height: 100%; width: auto; max-width: 100%; object-fit: cover; object-position: 50% 20%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 30%, #000 70%, transparent), linear-gradient(transparent, #000 12%, #000 58%, transparent 97%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 30%, #000 70%, transparent), linear-gradient(transparent, #000 12%, #000 58%, transparent 97%);
+    mask-composite: intersect;
+  }
+  .name { position: relative; z-index: 2; text-align: center; white-space: nowrap; color: var(--bone); padding-bottom: .1em; letter-spacing: var(--name-track); }
+  .name .line { display: inline-block; }
+  .stacked .name .line { display: block; width: max-content; margin-inline: auto; }
+  .stacked .name .sp { display: none; }
+  /* the hero ends on a hard bar of accent: no doubt where the next section starts */
+  .hero::after { content: ""; display: block; align-self: stretch; height: 6px; background: var(--accent); margin-top: 28px; position: relative; z-index: 2; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-photo img { animation: emerge 1.6s cubic-bezier(.2, .7, .2, 1) both; }
+    .name { animation: strike .7s .55s cubic-bezier(.7, 0, .2, 1) both; }
+    @keyframes emerge { from { opacity: 0; transform: scale(1.05); filter: brightness(.3); } }
+    @keyframes strike { from { clip-path: inset(0 0 100% 0); transform: translateY(.18em); } to { clip-path: inset(0 0 0 0); } }
+  }
+
+  /* ---------- Ticker (option) ---------- */
+  .ticker { display: none; overflow: hidden; border-bottom: 1px solid rgba(236, 231, 223, .14); padding-block: 22px; }
+  [data-ticker="on"] .ticker { display: block; }
+  .ticker-track { display: flex; width: max-content; }
+  .ticker-track span { display: inline-flex; align-items: baseline; gap: 14px; padding-right: 56px; white-space: nowrap; }
+  .ticker-track b { font: var(--display-weight) 34px/1 var(--display); text-transform: uppercase; }
+  .ticker-track i { font-family: var(--serif); font-style: var(--serif-style); color: var(--ash); font-size: 17px; }
+  .ticker-track span::after { content: ""; width: 8px; height: 8px; background: var(--accent); align-self: center; margin-left: 42px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ticker-track { animation: tick 60s linear infinite; }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    @keyframes tick { to { transform: translateX(-50%); } }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding-block: clamp(64px, 9vw, 120px); }
+  .sec-head { margin-bottom: clamp(28px, 4vw, 48px); }
+  /* A: big heading running into a rule */
+  [data-head="big"] .sec-head { display: flex; align-items: flex-end; gap: 24px; }
+  [data-head="big"] .sec-head h2 { font-size: clamp(48px, 7vw, 96px); }
+  [data-head="big"] .sec-head::after { content: ""; flex: 1; height: 3px; background: currentColor; opacity: .9; margin-bottom: .4em; }
+  /* B: heading in a left rail that stays put while the section scrolls */
+  [data-head="rail"] .sec-grid { display: grid; grid-template-columns: minmax(150px, 1fr) 4fr; gap: clamp(24px, 4vw, 64px); }
+  [data-head="rail"] .sec-head { position: sticky; top: 40px; align-self: start; padding-top: 18px; border-top: 3px solid currentColor; }
+  [data-head="rail"] .sec-head h2 { font-size: clamp(40px, 4.4vw, 64px); }
+  [data-head="rail"] .sec-body { min-width: 0; }
+  /* C: centred heading over a short accent bar */
+  [data-head="centre"] .sec-head { text-align: center; }
+  [data-head="centre"] .sec-head h2 { font-size: clamp(44px, 6vw, 84px); }
+  [data-head="centre"] .sec-head::after { content: ""; display: block; width: 64px; height: 4px; margin: 22px auto 0; background: var(--accent); }
+  [data-head="centre"] .credits-sec .sec-head::after { background: var(--accent-ink); }
+
+  /* ---------- Reel ---------- */
+  .reel { background: var(--iron); }
+  .reel-video { position: relative; aspect-ratio: 16 / 9; background: #000; }
+  .reel-video video { width: 100%; height: 100%; display: block; object-fit: contain; }
+  .reel-start {
+    position: absolute; inset: 0; border: 0; padding: 0; background: rgba(0, 0, 0, .25); cursor: pointer;
+    display: grid; place-items: center;
+  }
+  .reel-start span {
+    width: clamp(72px, 9vw, 112px); aspect-ratio: 1; display: grid; place-items: center;
+    background: var(--accent); color: #000; transition: transform .2s;
+  }
+  .reel-start svg { width: 32%; margin-left: 8%; }
+  .reel-start:hover span { transform: scale(1.08); }
+  .reel.played .reel-start { display: none; }
+  .pick-label { margin: 28px 0 12px; font-weight: 600; color: var(--ash); }
+  .reel-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .reel-tabs button {
+    display: flex; align-items: center; gap: 16px; text-align: left; cursor: pointer;
+    padding: 18px 20px; background: #000; border: 2px solid #3a3a3a; transition: border-color .15s, background .15s;
+  }
+  .reel-tabs button:hover { border-color: var(--bone); }
+  .reel-tabs button[aria-selected="true"] { border-color: var(--accent); }
+  .pick-icon { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 2px solid currentColor; }
+  .pick-icon svg { width: 13px; margin-left: 3px; }
+  [aria-selected="true"] .pick-icon { background: var(--accent); border-color: var(--accent); color: #000; }
+  .pick-text { flex: 1; display: grid; }
+  .pick-title { font: var(--display-weight) 30px/1 var(--display); text-transform: uppercase; }
+  .pick-text small { font-family: var(--serif); font-style: var(--serif-style); font-size: 16px; color: var(--ash); margin-top: 4px; }
+  .now { display: none; font-style: normal; font-size: 13px; font-weight: 700; padding: 4px 9px; background: var(--accent); color: #000; }
+  [aria-selected="true"] .now { display: block; }
+  .b-now { display: none; }
+  .reel.playing [aria-selected="true"] .b-now { display: inline; }
+  .reel.playing [aria-selected="true"] .b-sel { display: none; }
+  /* B: video with the picker stacked beside it */
+  [data-reel="side"] .reel-body { display: grid; grid-template-columns: 2.2fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: center; }
+  [data-reel="side"] .pick-label { margin-top: 0; }
+  [data-reel="side"] .reel-tabs { grid-template-columns: 1fr; }
+  [data-reel="side"] .reel-tabs button { flex-wrap: wrap; }
+
+  /* ---------- Photos ---------- */
+  .gallery button { padding: 0; border: 0; background: #000; cursor: zoom-in; overflow: hidden; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; transition: transform .5s; }
+  .gallery button:hover img { transform: scale(1.04); }
+  /* Filmstrip that scrolls sideways: whole photos only (4 / 3 / 2 to a view), arrows and a count */
+  .gallery { --per: 4; display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .gallery::-webkit-scrollbar { display: none; }
+  .gallery button { flex: none; width: calc((100% - (var(--per) - 1) * 6px) / var(--per)); aspect-ratio: 2 / 3; scroll-snap-align: start; }
+  .strip-ctrl { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .strip-ctrl button { width: 52px; height: 52px; border: 2px solid var(--bone); background: none; cursor: pointer; font-size: 24px; }
+  .strip-ctrl button:hover:not(:disabled) { background: var(--bone); color: #000; }
+  .strip-ctrl button:disabled { opacity: .3; cursor: default; }
+  .strip-ctrl output { margin-left: 8px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ash); }
+  .strip-bar { flex: 1; height: 2px; background: rgba(236, 231, 223, .18); position: relative; }
+  .strip-bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--accent); }
+
+  /* ---------- Credits: the one light section ---------- */
+  .credits-sec { background: var(--bone); color: #000; }
+  .credit-role, .yr-list .role, .ix-role { font-family: var(--serif); font-style: var(--serif-style); }
+  .credits, .credits-years, .credits-index { display: none; }
+  [data-credits="columns"] .credits { display: grid; }
+  [data-credits="years"] .credits-years { display: block; }
+  [data-credits="index"] .credits-index { display: block; }
+  /* A: categories in balanced columns */
+  .credits { grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 0 clamp(28px, 4vw, 56px); border-bottom: 3px solid #000; padding-bottom: 28px; }
+  .credit-col > :first-child h3 { margin-top: 0; }
+  .credits h3 {
+    font: var(--display-weight) 30px/1 var(--display); text-transform: uppercase;
+    color: var(--accent-ink); margin: 34px 0 6px; padding-bottom: 8px; border-bottom: 3px solid #000;
+  }
+  .credit { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(0, 0, 0, .16); }
+  .credit-title { font-weight: 700; line-height: 1.3; }
+  .credit-role { grid-row: 2; color: var(--soot); font-size: 16px; line-height: 1.4; }
+  .credit-year { grid-row: 1 / span 2; grid-column: 2; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .credit-col > :last-child .credit:last-child, .credit-col > .credit:last-child { border-bottom: 0; }
+  /* B: by year, newest first */
+  .yr { display: grid; grid-template-columns: minmax(120px, 1fr) 5fr; gap: clamp(20px, 3vw, 48px); padding: 28px 0; border-top: 3px solid #000; }
+  .yr:last-child { border-bottom: 3px solid #000; }
+  .yr-num { font-size: clamp(48px, 6vw, 88px); color: var(--accent-ink); position: sticky; top: 24px; align-self: start; }
+  .yr-list { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: clamp(28px, 4vw, 56px); }
+  .yr-list li { break-inside: avoid; display: grid; padding: 8px 0 10px; border-bottom: 1px solid rgba(0, 0, 0, .16); }
+  .yr-list b { line-height: 1.3; }
+  .yr-list .role { color: var(--soot); font-size: 16px; line-height: 1.4; }
+  .yr-list .kind { font-size: 13px; font-weight: 700; color: var(--accent-ink); margin-top: 2px; }
+  /* C: one sortable index with filters */
+  .ix-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .ix-filters button { padding: 8px 14px; border: 2px solid #000; background: none; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .ix-filters button:hover { background: rgba(0, 0, 0, .08); }
+  .ix-filters button[aria-pressed="true"] { background: #000; color: var(--bone); }
+  .ix-filters sup { font-size: 11px; margin-left: 4px; opacity: .7; }
+  .ix-row { display: grid; grid-template-columns: 2.4fr 1.6fr 1fr 80px; gap: 20px; padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, .16); align-items: baseline; }
+  .ix-row.ix-headrow { border-bottom: 3px solid #000; font-size: 14px; font-weight: 700; color: var(--soot); padding-top: 0; }
+  .ix-title { font-weight: 700; line-height: 1.3; }
+  .ix-role { color: var(--soot); font-size: 16px; }
+  .ix-kind { font-size: 15px; }
+  .ix-year { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .ix-row[hidden] { display: none; }
+
+  /* ---------- Footer ---------- */
+  .footer { padding-block: clamp(64px, 9vw, 120px) 32px; border-top: 6px solid var(--accent); }
+  /* the heading runs the full width on one line; contact details sit in a row beneath it */
+  .footer h2 { grid-column: 1 / -1; font-size: clamp(52px, 8vw, 120px); line-height: .92; white-space: nowrap; }
+  .email { display: inline-block; margin: 0 0 28px; font-family: var(--serif); font-style: var(--serif-style); font-size: clamp(24px, 3vw, 36px); text-decoration-thickness: 1px; text-underline-offset: 7px; }
+  .email:hover { color: var(--accent); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px; padding: 16px 26px; background: var(--accent); color: #000;
+    font-weight: 700; text-decoration: none; border: 2px solid var(--accent);
+  }
+  .btn:hover { background: transparent; color: var(--accent); }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px 40px; align-items: end; }
+  .foot-grid h3 { margin: 0 0 8px; font-size: 15px; font-weight: 700; color: var(--ash); }
+  .foot-grid p, .foot-grid ul { margin: 0; padding: 0; list-style: none; }
+  .foot-grid li + li { margin-top: 4px; }
+  .foot-grid a:not(.btn):not(.email) { text-decoration: none; border-bottom: 2px solid var(--accent); }
+  .colophon { margin-top: 72px; color: var(--ash); font-size: 14px; }
+
+  /* Lightbox */
+  .lightbox { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; }
+  .lightbox::backdrop { background: rgba(0, 0, 0, .94); }
+  .lightbox img { max-height: 90vh; max-width: 86vw; }
+  .lightbox button { position: fixed; background: #000; color: var(--bone); border: 2px solid var(--bone); width: 52px; height: 52px; font-size: 28px; cursor: pointer; }
+  .lightbox .prev { left: 16px; top: 50%; } .lightbox .next { right: 16px; top: 50%; }
+  .lightbox-close { top: 16px; right: 16px; }
+
+  @media (max-width: 960px) {
+    [data-head="rail"] .sec-grid { display: block; }
+    [data-head="rail"] .sec-head { position: static; }
+    [data-reel="side"] .reel-body { display: block; }
+    [data-reel="side"] .pick-label { margin-top: 28px; }
+    .gallery { --per: 3; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .foot-grid > :nth-child(2) { grid-column: 1 / -1; }
+    .yr-list { columns: 1; }
+    .ix-row { grid-template-columns: 1fr auto; gap: 2px 16px; }
+    .ix-role { grid-row: 2; }
+    .ix-kind { grid-row: 3; font-size: 13px; font-weight: 700; color: var(--accent-ink); }
+    .ix-year { grid-row: 1; grid-column: 2; }
+    .ix-headrow { display: none; }
+  }
+  @media (max-width: 600px) {
+    .footer h2 { white-space: normal; }
+    body { font-size: 16px; }
+    .reel-tabs { grid-template-columns: 1fr; }
+    .pick-title { font-size: 26px; }
+    .yr { grid-template-columns: 1fr; gap: 8px; }
+    .yr-num { position: static; }
+    .gallery { --per: 2; }
+    .lightbox .prev, .lightbox .next { top: auto; bottom: 16px; }
+  }
+
+  /* MOCKUP ONLY: options panel */
+  .mock { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: grid; gap: 9px; padding: 14px 16px; width: 280px;
+    max-height: calc(100vh - 32px); overflow-y: auto;
+    background: #fff; color: #000; font: 13px/1.3 system-ui, sans-serif; box-shadow: 0 8px 30px rgba(0,0,0,.5); }
+  .mock label { display: grid; gap: 3px; min-width: 0; }
+  .mock select { font: inherit; padding: 3px; width: 100%; }
+  .mock[hidden], .mock-toggle[hidden] { display: none; }
+  .mock-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 50; padding: 8px 14px; background: #fff; color: #000; border: 0; cursor: pointer; }
+</style>
+<!-- Options panel shows only with ?options in the URL; demo visitors see the approved defaults. -->
+<script>if (!/[?&]options\b/.test(location.search)) document.documentElement.classList.add('no-mock');</script>
+<style>.no-mock .mock, .no-mock .mock-toggle { display: none !important; }</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-photo" id="top">
+    <img src="assets/photos/hero-harrison-keen-2.jpg" alt="Harrison Keen" width="720" height="900" fetchpriority="high">
+  </div>
+  <h1 class="name display"><span class="fit"><span class="line">Harrison</span><span class="sp"> </span><span class="line">Keen</span></span></h1>
+</header>
+
+<div class="ticker" aria-label="Selected credits">
+  <div class="ticker-track">
+    <span><b>Algorithm</b><i>Feature film</i></span>
+    <span><b>Super Godfather 2</b><i>Vertical drama</i></span>
+    <span><b>Black Ties and White Lies</b><i>Vertical drama</i></span>
+    <span><b>Stranger Cases</b><i>Voice</i></span>
+    <span><b>Viveza Criolla</b><i>Short film</i></span>
+    <span><b>Sons of Sun</b><i>Theatre</i></span>
+  </div>
+</div>
+
+<main>
+
+  <section class="reel" id="reel" aria-labelledby="reel-title">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 class="display" id="reel-title">Reel</h2></div>
+      <div class="sec-body reel-body">
+        <div class="reel-video">
+          <video id="player" playsinline preload="none"
+                 poster="assets/photos/showreel-poster.jpg"
+                 src="assets/video/Showreel_HarrisonKeen.mp4"></video>
+          <button class="reel-start" type="button" aria-label="Play video"><span><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"/></svg></span></button>
+        </div>
+        <div class="reel-pick">
+          <p class="pick-label" id="pick-label">Choose a video</p>
+          <div class="reel-tabs" role="tablist" aria-labelledby="pick-label">
+            <button role="tab" aria-selected="true"
+                    data-src="assets/video/Showreel_HarrisonKeen.mp4"
+                    data-poster="assets/photos/showreel-poster.jpg"><span class="pick-icon" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"/></svg></span><span class="pick-text"><span class="pick-title">Showreel</span><small>Selected scenes</small></span><em class="now"><span class="b-now">Now playing</span><span class="b-sel">Selected</span></em></button>
+            <button role="tab" aria-selected="false"
+                    data-src="assets/video/villain-clips.mp4"
+                    data-poster="assets/video/villain-clips.jpg"><span class="pick-icon" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"/></svg></span><span class="pick-text"><span class="pick-title">Villain scenes</span><small>Darker roles</small></span><em class="now"><span class="b-now">Now playing</span><span class="b-sel">Selected</span></em></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos" aria-labelledby="photos-title">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 class="display" id="photos-title">Photos</h2></div>
+      <div class="sec-body">
+        <div class="gallery">
+          <button><img src="assets/photos/harrison-keen-4.jpg" alt="Moody headshot in a black jacket" loading="lazy" width="900" height="1125"></button>
+          <button><img src="assets/photos/mrc8528.jpg" alt="Black and white portrait, hands clasped" loading="lazy" width="900" height="1371"></button>
+          <button><img src="assets/photos/harrison-keen-3.jpg" alt="Headshot in a brown leather jacket" loading="lazy" width="900" height="1125"></button>
+          <button><img src="assets/photos/img_1783_cropped.jpg" alt="Film still in an orange prison jumpsuit" loading="lazy" width="900" height="1351"></button>
+          <button><img src="assets/photos/img_1949.jpg" alt="Black and white still in an open-collared suit" loading="lazy" width="900" height="1350"></button>
+          <button><img src="assets/photos/hero-harrison-keen-5.jpg" alt="Smiling headshot on green" loading="lazy" width="720" height="900"></button>
+          <button><img src="assets/photos/img_1941.jpg" alt="Film still in a dim bar" loading="lazy" width="900" height="1350"></button>
+          <button><img src="assets/photos/scaleddown.jpg" alt="Period costume still with flat cap and braces" loading="lazy" width="900" height="1382"></button>
+          <button><img src="assets/photos/harrison-457.jpg" alt="Laughing headshot on red" loading="lazy" width="900" height="1125"></button>
+          <button><img src="assets/photos/dsc07561.jpg" alt="Stage still in a gold shirt" loading="lazy" width="900" height="1350"></button>
+          <button><img src="assets/photos/dsc08433.jpg" alt="Stage still, an intimate scene" loading="lazy" width="900" height="1350"></button>
+          <button><img src="assets/photos/hero-harrison-keen-2.jpg" alt="Headshot in a grey suit and tie" loading="lazy" width="720" height="900"></button>
+        </div>
+        <div class="strip-ctrl">
+          <button type="button" class="strip-prev" aria-label="Previous photos">‹</button>
+          <button type="button" class="strip-next" aria-label="Next photos">›</button>
+          <output aria-live="polite">1–4 of 12</output>
+          <span class="strip-bar" aria-hidden="true"><i></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="credits-sec" id="credits" aria-labelledby="credits-title">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 class="display" id="credits-title">Credits</h2></div>
+      <div class="sec-body">
+      <div class="credits">
+        <div class="credit-keep"><h3>Feature film</h3><div class="credit"><span class="credit-title">Algorithm</span><span class="credit-role">Danny Streeter</span><span class="credit-year">2026</span></div></div>
+        <div class="credit-keep"><h3>Vertical drama</h3><div class="credit"><span class="credit-title">Super Godfather 2</span><span class="credit-role">Felix Thorne</span><span class="credit-year">2026</span></div></div>
+        <div class="credit"><span class="credit-title">Black Ties and White Lies</span><span class="credit-role">Brandon Harrington</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">The Duel</span><span class="credit-role">Harrison</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">Superstar</span><span class="credit-role">Aaron Myers</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">Reborn at 18: The Great Grandma Takes Charge</span><span class="credit-role">Ryan Ashford</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">Take Back My Billionaire Stolen By Bestie</span><span class="credit-role">Jack</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">Poolwatch</span><span class="credit-role">Anthony's Man-Crush</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">The Summer I Turned Bad</span><span class="credit-role">Dale</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">Runaway Prince's Secret Vacation</span><span class="credit-role">Benji</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">Heiress Returns Boss's Defense and Love</span><span class="credit-role">Daniel Roth</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">Flash Marriage to My Billionaire Hobo Hubby</span><span class="credit-role">Mike</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">Reborn to Find I Am the Mogul's Lost Love</span><span class="credit-role">Jimmy Dupont</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">The Mafia's Unwanted Blind Savior</span><span class="credit-role">Zed</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">The Heiress Blacklisted Her Husband</span><span class="credit-role">Thomas Wilson</span><span class="credit-year">2024</span></div>
+        <div class="credit"><span class="credit-title">Daddy's Best Friend Made Me His Billion Dollar Wife</span><span class="credit-role">Michael Lambert</span><span class="credit-year">2024</span></div>
+        <div class="credit"><span class="credit-title">Contract Marriage Before Election</span><span class="credit-role">Elliot Hill</span><span class="credit-year">2024</span></div>
+        <div class="credit-keep"><h3>Short film</h3><div class="credit"><span class="credit-title">Viveza Criolla</span><span class="credit-role">George</span><span class="credit-year">2026</span></div></div>
+        <div class="credit"><span class="credit-title">Sambar Pot Pie</span><span class="credit-role">David</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">Off Book</span><span class="credit-role">Derek Hughes</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">The Girl Who Drew Stars</span><span class="credit-role">Lead</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">Standing 8</span><span class="credit-role">Caleb</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">Red Eye</span><span class="credit-role">Andres</span><span class="credit-year">2026</span></div>
+        <div class="credit"><span class="credit-title">Happy Hour</span><span class="credit-role">The Robber</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">The One Left Behind</span><span class="credit-role">Charlie</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">The Return</span><span class="credit-role">Edward</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">Rush Helm</span><span class="credit-role">Ross / Narrator</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">The Bystander Effect</span><span class="credit-role">Clyde</span><span class="credit-year">2023</span></div>
+        <div class="credit"><span class="credit-title">The Barber</span><span class="credit-role">Employee (Monster)</span><span class="credit-year">2023</span></div>
+        <div class="credit-keep"><h3>Web series</h3><div class="credit"><span class="credit-title">Chai Tea</span><span class="credit-role">Blake Owens</span><span class="credit-year">2026</span></div></div>
+        <div class="credit-keep"><h3>Voice</h3><div class="credit"><span class="credit-title">Stranger Cases</span><span class="credit-role">Agent Ethan Hayes</span><span class="credit-year">2025&ndash;26</span></div></div>
+        <div class="credit"><span class="credit-title">Welcome to Fosters (Neon Inkwell Collection)</span><span class="credit-role">Mark</span><span class="credit-year">2024</span></div>
+        <div class="credit-keep"><h3>Commercial</h3><div class="credit"><span class="credit-title">SERVD Cards Social Media Campaign</span><span class="credit-role">Boyfriend</span><span class="credit-year">2025</span></div></div>
+        <div class="credit"><span class="credit-title">Esky Promotion</span><span class="credit-role">Male Character</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">WD-40 No Vac Promotion</span><span class="credit-role">Male Character</span><span class="credit-year">2025</span></div>
+        <div class="credit"><span class="credit-title">eBay &times; TikTok &lsquo;Seen It All&rsquo; Campaign</span><span class="credit-role">Charlie</span><span class="credit-year">2024</span></div>
+        <div class="credit"><span class="credit-title">Finder &lsquo;Uhhh-Huh!&rsquo; Sea Urchin Ad</span><span class="credit-role">Jacob</span><span class="credit-year">2024</span></div>
+        <div class="credit"><span class="credit-title">Cochlear Odyssey</span><span class="credit-role">Graduating Grandson</span><span class="credit-year">2024</span></div>
+        <div class="credit-keep"><h3>Music video</h3><div class="credit"><span class="credit-title">Rolling Home</span><span class="credit-role">Lead</span><span class="credit-year">2026</span></div></div>
+        <div class="credit-keep"><h3>Theatre</h3><div class="credit"><span class="credit-title">Sons of Sun</span><span class="credit-role">Elvis Presley, Johnny Cash, Carl Perkins &amp; Jerry Lee Lewis</span><span class="credit-year">2024&ndash;25</span></div></div>
+        <div class="credit"><span class="credit-title">Mystery of the Blue Bloodhound</span><span class="credit-role">Mark Barrens</span><span class="credit-year">2023</span></div>
+        <div class="credit"><span class="credit-title">Murder by Invitation</span><span class="credit-role">Mr Dawes</span><span class="credit-year">2023</span></div>
+      </div>
+      <div class="credits-years"></div>
+      <div class="credits-index">
+        <div class="ix-filters" role="group" aria-label="Filter credits"></div>
+        <div class="ix-row ix-headrow" aria-hidden="true"><span>Production</span><span>Role</span><span>Type</span><span class="ix-year">Year</span></div>
+        <div class="ix-rows"></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <h2 class="display">Casting &amp; bookings</h2>
+      <div>
+        <a class="email" href="mailto:keen_ha@outlook.com">keen_ha@outlook.com</a><br>
+        <a class="btn" href="assets/HarrisonKeen_ActingCV.pdf" download>Download CV</a>
+      </div>
+      <div>
+        <h3>Representation</h3>
+        <!-- Replace with the client's agent, or remove this column. -->
+        <p>Agency Name<br><a href="mailto:agent@example.com">agent@example.com</a></p>
+      </div>
+      <div>
+        <h3>Profiles</h3>
+        <ul>
+          <li><a href="https://www.imdb.com/name/nm15486957/" rel="noopener">IMDb</a></li>
+          <li><a href="https://www.instagram.com/harrison.keen/" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="colophon">© 2026 Harrison Keen</p>
+  </div>
+</footer>
+
+<dialog class="lightbox" aria-label="Photo viewer">
+  <img alt="">
+  <button class="lightbox-step prev" aria-label="Previous photo">‹</button>
+  <button class="lightbox-step next" aria-label="Next photo">›</button>
+  <button class="lightbox-close" aria-label="Close">×</button>
+</dialog>
+
+<!-- MOCKUP ONLY: options panel -->
+<button class="mock-toggle" hidden>Options</button>
+<aside class="mock" aria-label="Mockup options">
+  <strong>Mockup options</strong>
+  <label>Name font <select data-opt="name">
+    <option value="anton">Anton</option>
+    <option value="oswald">Oswald (backup)</option>
+  </select></label>
+  <label>Name size <select data-opt="size">
+    <option value="4">4: 55%</option>
+    <option value="3">3: 70% (backup)</option>
+  </select></label>
+  <label>Accent <select data-opt="accent">
+    <option value="champagne">Champagne</option>
+    <option value="ivory">Ivory (backup)</option>
+  </select></label>
+  <label>Page background <select data-opt="bg">
+    <option value="black">True black</option>
+    <option value="midnight">Midnight navy (backup)</option>
+    <option value="espresso">Espresso (backup)</option>
+  </select></label>
+  <label>Section headings <select data-opt="head">
+    <option value="big">A: big, running into a rule</option>
+    <option value="rail">B: left rail (backup)</option>
+    <option value="centre">C: centred over a bar (backup)</option>
+  </select></label>
+  <label>Credits <select data-opt="credits">
+    <option value="years">B: by year, newest first</option>
+    <option value="columns">A: by type, in columns (backup)</option>
+    <option value="index">C: list + filters (other templates)</option>
+  </select></label>
+  <button type="button" class="mock-hide" style="justify-self:end">Hide</button>
+</aside>
+
+<script>
+  const root = document.documentElement;
+
+  // Hero: the name is sized to a share of the page width, then pulled up over the photo,
+  // and the photo takes whatever height is left so the hero fills one screen.
+  const hero = document.querySelector('.hero');
+  const name = hero.querySelector('.name');
+  const fit = name.querySelector('.fit');
+  const lines = [...name.querySelectorAll('.line')];
+  const photoBox = hero.querySelector('.hero-photo');
+  const nameScale = { 1: 1, 2: .85, 3: .7, 4: .55 };
+  function layoutHero() {
+    // one line across the photo is too small on a phone, so it stacks there
+    const stack = innerWidth < 600;
+    hero.classList.toggle('stacked', stack);
+    const vw = document.documentElement.clientWidth;
+    const gutter = Math.max(16, Math.min(vw * .05, 72));
+    const scale = nameScale[root.dataset.size] || .7;
+    name.style.marginTop = '';
+    name.style.fontSize = '100px';
+    let target, width;
+    if (stack) {
+      // both lines share one size, set by the longer line
+      target = Math.min(vw - 2 * gutter, 640) * Math.max(scale, .75);
+      width = Math.max(...lines.map(l => l.getBoundingClientRect().width));
+    } else {
+      target = Math.min(vw - 2 * gutter, 1360) * scale;
+      width = fit.getBoundingClientRect().width;
+    }
+    name.style.fontSize = (100 * target / width) + 'px';
+    const nameH = name.offsetHeight;
+    const overlap = stack ? .5 : .45;
+    name.style.marginTop = (-overlap * nameH) + 'px';
+    const room = innerHeight - 24 - 34 - nameH * (1 - overlap);
+    photoBox.style.height = Math.max(vw < 600 ? 300 : 360, room) + 'px';
+  }
+  layoutHero();
+  document.fonts.ready.then(layoutHero);
+  addEventListener('resize', layoutHero);
+
+  // Ticker: a second copy of the items so the loop has no seam
+  const track = document.querySelector('.ticker-track');
+  [...track.children].forEach(s => { const c = s.cloneNode(true); c.setAttribute('aria-hidden', 'true'); track.append(c); });
+
+  // Reel: switch between the two videos
+  const player = document.getElementById('player');
+  const reel = document.getElementById('reel');
+  const tabs = document.querySelectorAll('.reel-tabs button');
+  // browser controls only appear once a video has started, so the first view is just the poster
+  const start = () => { reel.classList.add('played'); player.controls = true; player.play().catch(() => {}); };
+  reel.querySelector('.reel-start').addEventListener('click', start);
+  player.addEventListener('playing', () => reel.classList.add('playing'));
+  ['pause', 'ended', 'emptied'].forEach(e => player.addEventListener(e, () => reel.classList.remove('playing')));
+  // scrolling the video out of view pauses it, which puts the badge back to "Selected"
+  new IntersectionObserver(([e]) => { if (!e.isIntersecting && !player.paused) player.pause(); }).observe(player);
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    if (tab.getAttribute('aria-selected') === 'true') return start();
+    tabs.forEach(t => t.setAttribute('aria-selected', t === tab));
+    player.pause();
+    player.poster = tab.dataset.poster;
+    player.src = tab.dataset.src;
+    start();
+  }));
+
+  // Gallery lightbox
+  const gallery = document.querySelector('.gallery');
+  const shots = [...gallery.querySelectorAll('img')];
+  const box = document.querySelector('.lightbox');
+  const big = box.querySelector('img');
+  let at = 0;
+  const show = i => { at = (i + shots.length) % shots.length; big.src = shots[at].src; big.alt = shots[at].alt; };
+  shots.forEach((img, i) => img.parentElement.addEventListener('click', () => { show(i); box.showModal(); }));
+  box.querySelector('.prev').addEventListener('click', () => show(at - 1));
+  box.querySelector('.next').addEventListener('click', () => show(at + 1));
+  box.querySelector('.lightbox-close').addEventListener('click', () => box.close());
+  box.addEventListener('click', e => { if (e.target === box) box.close(); });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') show(at - 1);
+    if (e.key === 'ArrowRight') show(at + 1);
+  });
+
+  // Filmstrip: arrows step one photo, the count and bar follow the scroll
+  const stripOut = document.querySelector('.strip-ctrl output');
+  const stripBar = document.querySelector('.strip-bar i');
+  const stripPrev = document.querySelector('.strip-prev'), stripNext = document.querySelector('.strip-next');
+  const step = () => shots[0].parentElement.offsetWidth + 6;
+  stripPrev.addEventListener('click', () => gallery.scrollBy({ left: -step(), behavior: 'smooth' }));
+  stripNext.addEventListener('click', () => gallery.scrollBy({ left: step(), behavior: 'smooth' }));
+  // the count shows the range in view, so the last stop reads "9–12 of 12"
+  function updateStrip() {
+    const max = gallery.scrollWidth - gallery.clientWidth;
+    const per = Math.max(1, Math.round((gallery.clientWidth + 6) / step()));
+    const atEnd = gallery.scrollLeft >= max - 2;
+    const first = atEnd ? shots.length - per : Math.round(gallery.scrollLeft / step());
+    stripOut.textContent = `${first + 1}–${first + per} of ${shots.length}`;
+    stripBar.style.width = (max > 0 ? 100 * gallery.scrollLeft / max : 0) + '%';
+    stripPrev.disabled = gallery.scrollLeft <= 2;
+    stripNext.disabled = atEnd;
+  }
+  gallery.addEventListener('scroll', updateStrip, { passive: true });
+  addEventListener('resize', updateStrip);
+  updateStrip();
+
+  // Credits: read once from the markup, then shown three ways
+  const credits = document.querySelector('.credits');
+  const rows = [...credits.children];
+  const data = [];
+  let kind = '';
+  rows.forEach(r => {
+    const c = r.classList.contains('credit') ? r : r.querySelector('.credit');
+    if (r.classList.contains('credit-keep')) kind = r.querySelector('h3').textContent;
+    data.push({ kind, title: c.querySelector('.credit-title').textContent, role: c.querySelector('.credit-role').textContent, year: c.querySelector('.credit-year').textContent });
+  });
+  const el = (tag, className, ...kids) => { const e = document.createElement(tag); if (className) e.className = className; e.append(...kids); return e; };
+
+  // B: by year, newest first; a "2025–26" run files under the year it ended
+  const lastYear = y => { const [a, b] = y.split('–'); return b ? +(a.slice(0, 2) + b) : +a; };
+  const byYear = new Map();
+  [...data].sort((a, b) => lastYear(b.year) - lastYear(a.year)).forEach(d => {
+    const y = lastYear(d.year);
+    if (!byYear.has(y)) byYear.set(y, []);
+    byYear.get(y).push(d);
+  });
+  document.querySelector('.credits-years').replaceChildren(...[...byYear].map(([y, list]) =>
+    el('div', 'yr', el('div', 'yr-num display', String(y)),
+      el('ul', 'yr-list', ...list.map(d => el('li', '', el('b', '', d.title), el('span', 'role', d.role + (d.year.includes('–') ? ` (${d.year})` : '')), el('span', 'kind', d.kind)))))));
+
+  // C: one list with type filters
+  const ixRows = data.map(d => el('div', 'ix-row', el('span', 'ix-title', d.title), el('span', 'ix-role', d.role), el('span', 'ix-kind', d.kind), el('span', 'ix-year', d.year)));
+  ixRows.forEach((r, i) => r.dataset.kind = data[i].kind);
+  document.querySelector('.ix-rows').replaceChildren(...ixRows);
+  const kinds = ['All', ...new Set(data.map(d => d.kind))];
+  const filters = kinds.map(k => {
+    const n = k === 'All' ? data.length : data.filter(d => d.kind === k).length;
+    const b = el('button', '', k, el('sup', '', String(n)));
+    b.type = 'button';
+    b.setAttribute('aria-pressed', k === 'All');
+    b.addEventListener('click', () => {
+      filters.forEach(f => f.setAttribute('aria-pressed', f === b));
+      ixRows.forEach(r => r.hidden = k !== 'All' && r.dataset.kind !== k);
+    });
+    return b;
+  });
+  document.querySelector('.ix-filters').replaceChildren(...filters);
+
+  // A: split into columns of near-equal height so every column ends on the same line.
+  // Breaks between categories are preferred; a break mid-category costs a little.
+  const colCount = () => { const w = credits.parentElement.clientWidth; return w > 980 ? 3 : w > 620 ? 2 : 1; };
+  function layoutCredits() {
+    if (root.dataset.credits !== 'columns') return;
+    const n = colCount();
+    credits.style.setProperty('--cols', n);
+    const cols = Array.from({ length: n }, () => el('div', 'credit-col'));
+    cols[0].append(...rows);
+    credits.replaceChildren(...cols);
+    if (n === 1) return;
+    const h = rows.map(r => r.offsetHeight);
+    const sum = (a, b) => h.slice(a, b).reduce((x, y) => x + y, 0);
+    const penalty = i => rows[i].classList.contains('credit-keep') ? 0 : 40;
+    let best = null;
+    const cuts = n === 2 ? rows.map((_, i) => [i]).slice(1) :
+      rows.flatMap((_, i) => rows.map((_, j) => [i, j])).filter(([i, j]) => i > 0 && j > i);
+    for (const c of cuts) {
+      const edges = [0, ...c, rows.length];
+      const tallest = Math.max(...edges.slice(1).map((e, k) => sum(edges[k], e)));
+      const score = tallest + c.reduce((t, i) => t + penalty(i), 0);
+      if (!best || score < best.score) best = { score, c };
+    }
+    const edges = [0, ...best.c, rows.length];
+    cols.forEach((col, k) => col.replaceChildren(...rows.slice(edges[k], edges[k + 1])));
+  }
+  layoutCredits();
+  let lastCols = colCount();
+  addEventListener('resize', () => { if (colCount() !== lastCols) { lastCols = colCount(); layoutCredits(); } });
+  document.fonts.ready.then(layoutCredits);
+
+  // MOCKUP ONLY: options panel
+  const mock = document.querySelector('.mock'), toggle = document.querySelector('.mock-toggle');
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem('powerful-opts-v4')) || {}; } catch (e) {}
+  const apply = () => document.fonts.ready.then(() => { layoutHero(); lastCols = colCount(); layoutCredits(); });
+  document.querySelectorAll('.mock select').forEach(sel => {
+    sel.value = saved[sel.dataset.opt] || root.dataset[sel.dataset.opt];
+    root.dataset[sel.dataset.opt] = sel.value;
+    sel.addEventListener('change', () => {
+      root.dataset[sel.dataset.opt] = sel.value;
+      apply();
+      saved[sel.dataset.opt] = sel.value;
+      try { localStorage.setItem('powerful-opts-v4', JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+  apply();
+  if (innerWidth < 600) { mock.hidden = true; toggle.hidden = false; }
+  document.querySelector('.mock-hide').addEventListener('click', () => { mock.hidden = true; toggle.hidden = false; });
+  toggle.addEventListener('click', () => { mock.hidden = false; toggle.hidden = true; });
+</script>
+</body>
+</html>
